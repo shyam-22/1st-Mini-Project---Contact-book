@@ -1,31 +1,34 @@
 import React from 'react'
-
+import {useSelector} from "react-redux"
+import ContactLayout from './ContactLayout';
 const Contacts = () => {
-    return (
-        <div>
-            <table className="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
+    const contacts = useSelector(state => state.contacts)
+  return (
+    <div>
+      <table className="table shadow">
+        <thead className="bg-danger text-white">  
+          <tr>
+            <th>
+                <div className="custom-control custom-checkbox">
+                    <label className="custom-control-label"></label>
+                    <input type="checkbox" className="custom-control-input"/>
+                </div>
+            </th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-  <tbody>
-
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-
-  </tbody>
-</table>
-</div>
-    )
-}
+        <tbody>
+            {
+                contacts.map((contact) => <ContactLayout contacts={contact}/> )
+            }        
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default Contacts
