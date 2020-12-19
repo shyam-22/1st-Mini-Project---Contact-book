@@ -1,0 +1,17 @@
+$primary : #6200ea;
+$success : #33691e;
+$danger : #f50057;
+$warning  : #ffab00;
+
+$theme-colors: (
+  "primary":    $primary,
+  "success":    $success,
+  "warning":    $warning,
+  "danger":     $danger,
+);
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body{
+  padding-top: 5rem; // 1 rem  = 5 * 16
+}
