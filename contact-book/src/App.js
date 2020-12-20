@@ -1,7 +1,7 @@
 import React from "react"
 import Contacts from "./COMPONENTS/Contacts/Contacts"
 import {BrowserRouter,Route,Switch} from 'react-router-dom'
-import Navbar from "./COMPONENTS/Elements/Navbar"
+import Navbar from "./COMPONENTS/NAVIGATION/Navbar";
 import "./Style_Folder/App.scss"
 
 import AddContact from "./COMPONENTS/Contacts/AddContact"

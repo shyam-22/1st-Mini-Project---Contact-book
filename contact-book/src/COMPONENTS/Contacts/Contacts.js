@@ -1,8 +1,9 @@
 import React from 'react'
 import {useSelector} from "react-redux"
 import ContactLayout from './ContactLayout';
+
 const Contacts = () => {
-    const contacts = useSelector(state => state.contacts)
+    const contacts = useSelector(state => state.abc.contacts)
   return (
     <div>
       <table className="table shadow">
@@ -23,7 +24,7 @@ const Contacts = () => {
 
         <tbody>
             {
-                contacts.map((contact) => <ContactLayout contacts={contact}/> )
+                contacts.map((contact) => <ContactLayout contacts={contact} key={contact.id}/> )
             }        
         </tbody>
       </table>

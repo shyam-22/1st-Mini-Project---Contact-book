@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import {addContact} from "../../Store"
+import {addContact} from "../../REDUX State/ACTIONS/action"
 import {connect} from "react-redux"
 import shortid from "shortid" 
-import {History} from "react-router-dom"
+import {history}from "react-router-dom"
 
 class AddContact extends Component {
     constructor(){
@@ -22,6 +22,7 @@ class AddContact extends Component {
         e.preventDefault();
         const newContactList = {id: shortid.generate(), name : this.state.name, phone:this.state.phone, email:this.state.email}
         this.props.handleSubmit(newContactList)
+        this.props.history.push("/")
     }
     render(){        
     return (
@@ -54,7 +55,6 @@ class AddContact extends Component {
 }
 const mapDispatchToProps = dispatch =>({
     handleSubmit : data => dispatch(addContact(data)),
-    this.props.history.push("/")
 }) 
 
 export default connect(null,mapDispatchToProps)(AddContact)

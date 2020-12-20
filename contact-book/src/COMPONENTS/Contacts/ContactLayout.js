@@ -1,7 +1,5 @@
 import React from 'react'
 import Avatar from "react-avatar"
-import {Link} from "react-router-dom"
-
 
 const ContactLayout = ({contacts}) => {
     const {name,phone,email} = contacts;
@@ -28,3 +26,6 @@ const ContactLayout = ({contacts}) => {
 }
 
 export default ContactLayout;
+
+//material-icon cdn
+//<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
