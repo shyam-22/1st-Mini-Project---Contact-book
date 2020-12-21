@@ -1,4 +1,9 @@
-const initialState = { contacts : 
+import {CREATE_CONTACT,GET_CONTACT,UPDATE_CONTACT,DELETE_CONTACT,CLEAR_CONTACT,
+  SELECT_CONTACT,DELETE_SELECTED_CONTACT} from "../CONSTANT/constant";
+
+
+const initialState = { 
+  contacts : 
     [
         {
           "id": 1,
@@ -230,16 +235,60 @@ const initialState = { contacts :
             "bs": "target end-to-end models"
           }
         }
-      ]
-}
+      ],
+      contact : null,
+      selectedContacts:[]
+    }
 
 export const contactReducer = (state= initialState, action) => {
     switch(action.type){
-      case "CREATE_CONTACT" :
+      case CREATE_CONTACT :
         return {
           ...state,
           contacts : [action.payload, ...state.contacts]
-        }  
+        };
+        
+        case GET_CONTACT : 
+          let arr = state.contacts.filter( (contact) => contact.id == action.payload)
+          arr = arr.values();
+          for(let val of arr){
+            arr = val
+          }
+          return {
+            ...state,
+            contact : arr,
+          };
+          
+          case UPDATE_CONTACT :
+            return{
+              ...state,
+              contacts : state.contacts.map((contact) => contact.id == action.payload.id ? action.payload : contact)
+            };
+
+          case DELETE_CONTACT:
+            let abc = state.contacts.filter((contact) => contact.id != action.payload)
+            return{...state, contacts : abc
+            };
+
+            case SELECT_CONTACT :
+            return{
+              ...state,
+              selectedContacts: [...action.payload]
+            }
+
+            case CLEAR_CONTACT :
+            return{
+              ...state,
+              selectedContacts: []
+            }
+
+            case DELETE_SELECTED_CONTACT :
+              return{
+                ...state,
+                contacts : []
+              }
+
+
       default : return state
     }
 
